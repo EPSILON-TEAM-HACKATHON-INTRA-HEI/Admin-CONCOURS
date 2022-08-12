@@ -1,0 +1,97 @@
+.bg-goldenrod {
+    background-color: #ecb322;
+}
+
+th,td {
+    border: 0.5px solid rgb(217, 216, 214);
+    padding: 5px;
+}
+
+thead {
+    font-size: 14px;
+    background-color: rgb(245, 238, 238);;
+    text-align: center;
+}
+
+tbody {
+    font-size: 13px;
+    text-align: center;
+}
+
+th {
+    vertical-align: top;
+}
+
+.card-header {
+    font-size: 14px;
+}
+
+.card-body {
+    font-size: 13px;
+}
+
+.flex {
+    display: inline;
+}
+
+.button {
+    border: 1px solid #ecb322;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button_1 {
+    float: inline-start;
+}
+
+.button_2 { 
+    float: inline-end;
+    background-color: #ecb322;
+}
+
+.card_content {
+    padding: 10px;
+    border-left: 2px solid #EBB016;
+}
+
+.wrap-circles {
+    display: flex;
+    min-height: 15vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0.5rem;
+    border-radius: 50%;
+    background: #FFCDB2;
+    overflow: hidden;
+  }
+
+  .circle.per-75 {
+    background-image: conic-gradient(#EBB016 75%, rgb(239, 239, 250));
+  }
+
+  .circle .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 115px;
+    height: 115px;
+    background: rgb(244, 244, 248);
+    border-radius: 50%;
+    font-size: 1.85em;
+    font-weight: 300;
+    color: black;
+  }
+  
