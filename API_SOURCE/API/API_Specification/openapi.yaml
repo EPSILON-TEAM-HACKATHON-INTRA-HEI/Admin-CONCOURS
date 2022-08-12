@@ -1,0 +1,206 @@
+openapi: 3.0.1
+info: 
+  title: CONTEST-Admin API
+  description: 'Global description of contest administrator api'
+  version: 1.0.0
+servers:
+  - url : https://admin.concours.com
+tags:
+  - name: result
+paths:
+  /result:
+    get:
+      tags:
+        - result
+      operationId: get result
+      summary: Get all result
+      description: Get all result
+      responses: 
+        200: 
+          description: Here's all movies
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/Result'
+        400: 
+          description: Bad request
+    post: 
+      tags:
+        - result
+      operationId: add result
+      summary: Add a new result for a new contestor
+      description: Add a new result for a new contestor
+      requestBody:
+        description: Result of a new contestor to be added
+        content:
+          application/json:
+            schema:  
+              $ref: '#/components/schemas/PostResult'
+        required: true
+      responses:
+        201:
+          description: Movie added
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:
+                  $ref : '#/components/schemas/Result'
+        400:
+          description: Bad request
+ 
+    patch:
+      tags:
+        - result
+      summary: Change result's information
+      description: Change result's information
+      requestBody: 
+        description: Change information
+        content :
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PatchResult'
+            examples:
+              changeTitle:
+                summary: change name
+                description: change name 
+                value: 
+                  name: "RANAIVO"
+                  id: 1
+              changeDateSortie:
+                summary: change  mathematics_contest note
+                description: change  mathematics contest note
+                value:
+                  note: 18
+                  id: 2
+      responses:
+        202:
+          description: Information(s) changed
+        400: 
+          description: Bad request
+        404:
+          description: Movie not found
+
+  /result/{id}:
+    delete :
+      tags :
+      - result
+      summary : Delete a result
+      description : Delete a result by id
+      parameters :
+      - name : id
+        in : path
+        schema :
+          type : integer
+        required: true
+      responses :
+        200 : 
+          description : Delete succesfully
+        400 : 
+          description : Bad request
+        404 : 
+          description : Entity not found
+ 
+components:
+  schemas:
+    Subject: 
+      type: object
+      properties:
+        id_subject:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Français"
+    Contest:
+      type: object
+      properties:
+        subject : 
+          type: string
+          example: "Français"
+        note: 
+          type: integer
+          example: 10
+    Bacc:
+        type: object
+        properties:
+          subject:
+            type: string
+            example: "Mathematics"
+          note: 
+            type: integer
+            example: 14
+    Result:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "RAKOTO"
+        last_name: 
+          type: string
+          example: "Bozy"
+        french_contest:
+          allOf: 
+            - $ref: '#/components/schemas/Contest/properties/note'
+        french_bacc:
+          allOf:
+            - $ref: '#/components/schemas/Bacc/properties/note'
+        mathematics_contest:
+          allOf:
+            - $ref: '#/components/schemas/Contest/properties/note'
+        mathematics_bacc:
+          allOf:
+            - $ref: '#/components/schemas/Bacc/properties/note'
+        mathematics:
+          type: integer
+          example: 13
+        average:
+          type: integer
+          example: 14
+        status:
+          type: string
+          example: "passed"
+    PostResult:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "RAKOTO"
+        last_name: 
+          type: string
+          example: "Bozy"
+        french_contest:
+          allOf: 
+            - $ref: '#/components/schemas/Contest/properties/note'
+        french_bacc:
+          allOf:
+            - $ref: '#/components/schemas/Bacc/properties/note'
+        mathematics_contest:
+          allOf:
+            - $ref: '#/components/schemas/Contest/properties/note'
+        mathematics_bacc:
+          allOf:
+            - $ref: '#/components/schemas/Bacc/properties/note'
+            
+    PatchResult:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "RANAIVO"
+        id:
+          type: integer
+          example: 1
+    DeleteResult:
+      type: object
+      properties:
+        messsage: 
+          type: string
+          example: "Delete successfully"
