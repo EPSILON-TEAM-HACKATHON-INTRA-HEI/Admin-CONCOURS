@@ -1,4 +1,4 @@
-package com.example.api.model;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,16 +15,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="subjects")
-public class Subjects {
+public class Subjects implements Serializable {
     @Id
     @Column(name="id_subject", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdSubject;
-    @Column(name="name", nullable = false)
+    private Integer IdSubject;
+    @Column(name="name", nullable = false, length = 50)
     private String Name;
-
-    @ManyToOne
-    @JoinColumn(name = "bac_id_note_bac")
-    private Bac bac;
-
 }
