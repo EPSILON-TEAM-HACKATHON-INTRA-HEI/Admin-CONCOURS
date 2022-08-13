@@ -1,4 +1,4 @@
-package com.example.api.model;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,14 +14,10 @@ import java.util.Set;
 @Setter
 
 @Entity
-@Table(name="bac")
-public class Bac {
+public class Bac implements Serializable {
     @Id
-    @Column(name="id_note_bac")
-    private int BacId;
-    @Column(name="grate_bac")
-    private String BacGrade;
-
-    @ManyToMany(cascade = {CascadeType.ALL})
-    private Set<Subjects> Subject_name;
+    @Column(name="id_bac")
+    private Integer BacId;
+    @Column(name="grade_bac")
+    private Float BacGrade;
 }
