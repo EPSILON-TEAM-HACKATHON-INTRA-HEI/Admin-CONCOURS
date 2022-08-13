@@ -6,6 +6,8 @@ import Header from './Header';
 import '../App.css';
 import EditIcon from '@mui/icons-material/Edit';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+
+
 function Change(props: { label: string, value: string | number }): React.ReactElement {
     const { label, value } = props
     const [edit, setEdit] = useState(false)
@@ -17,7 +19,7 @@ function Change(props: { label: string, value: string | number }): React.ReactEl
         <div className="arrange">
             <p className="card-text">{label}</p>
             {edit ?
-                <input className="inputlabel" type={"number"} value={value}></input>
+                <input className="inputlabel" type={"number"} value={value} onChange={(e) => setEdit(edit)}></input>
                 : <p className="btnlabelunedited">{value}</p>}
             {edit ? 
                 <button className="icon-edit">
@@ -63,7 +65,7 @@ export default function (): React.ReactElement {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="mt-4 flex">
+                                <div className="mt-4 mb-2 flex">
                                     <div className="button button_2 generer" onClick={() => { setIsHere2(!isHere2) }}>Generer</div>< br />
                                 </div>
                                 <div className="card p-3 left-card">
@@ -71,7 +73,7 @@ export default function (): React.ReactElement {
                                         <p className="card-text">Taux de reussite:</p>
                                         <div className="wrap-circles">
                                             <div className="circle per-75">
-                                                <div className="inner"><strong>75%</strong></div>
+                                                <div className="inner"><strong>70%</strong></div>
                                             </div>
                                         </div>
                                         <p className="card-text">Valeur mediane: <strong>12</strong></p>

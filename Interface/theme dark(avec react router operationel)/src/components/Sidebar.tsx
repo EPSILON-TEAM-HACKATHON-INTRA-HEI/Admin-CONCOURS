@@ -14,7 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default function Sidebar():React.ReactElement{
     const [ok,setOk]=useState(false)
     return(
-        <div>
+        <div className='navbar'>
         <React.Fragment key={"hmm"}>
           <Button onClick={()=>{setOk(!ok)}}><MenuIcon />{"test"}</Button>
           <Drawer
@@ -36,6 +36,7 @@ export default function Sidebar():React.ReactElement{
       </List>
           </Drawer>
         </React.Fragment>
+        <div className="mr-4 text-white logout">Logout</div>
     </div>
     )
 }
