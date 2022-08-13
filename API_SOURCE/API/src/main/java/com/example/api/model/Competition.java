@@ -1,14 +1,12 @@
-package com.example.api.model;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 
 @AllArgsConstructor
@@ -18,10 +16,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="competition")
-public class Competition {
+public class Competition implements Serializable {
     @Id
     @Column(name="comptetition_id", nullable = false)
-    private int CompetitionId;
+    private Integer CompetitionId;
     @Column(name="competition_grade")
-    private String CompetitionGrade;
+    private Float CompetitionGrade;
 }
